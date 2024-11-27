@@ -123,6 +123,7 @@ export default function Example() {
           />
         </div>
       </div>
+      <div className="h-px bg-gray-300 w-full"></div>
       <div className="bg-white py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <motion.div

@@ -1,25 +1,17 @@
-import { useState } from 'react';
-import './Features.css'; 
-import App from './app';
-
+import { useNavigate } from 'react-router-dom';
+import './Features.css';
 
 function Features() {
+  const navigate = useNavigate();
+
   return (
-    <App/>
-    // <div className="search-container">
-    //   <div className="search-box">
-    //     <input
-    //       type="text"
-    //       placeholder="Search.."
-    //       value={inputValue}
-    //       onChange={handleInputChange}
-    //       className="search-input"
-    //     />
-    //     <button onClick={handleSubmit} className="search-button">
-    //       Fetch
-    //     </button>
-    //   </div>
-    // </div>
+    <div className="features-container">
+      <h1 className="features-heading">Search By</h1>
+      <div className="button-group">
+        <button className="features-button" onClick={() => navigate('/product-name')}>Product Name</button>
+        <button className="features-button" onClick={() => navigate('/product-url')}>Product URL</button>
+      </div>
+    </div>
   );
 }
 

@@ -4,6 +4,7 @@ import Navbar from './components/Navbar'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Pricing from './components/pricing';
 import Features from './components/Features';
+import Amazon from './components/Amazon';
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
         <Route path="/" element={<Example />} />
         <Route path="/pricing" element={<Pricing/>} />
         <Route path="/features" element={<Features/>} />
+        <Route path="/amazon" element={<Amazon/>}/>
       </Routes>
     </Router>
     </>

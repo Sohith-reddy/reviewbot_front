@@ -1,11 +1,6 @@
 /* Center the search bar on the page */
-.search-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* Full height to center vertically */
-    background-color: #f4f4f9;
-  }
+/* Ensure the container takes full height and centers content */
+
   
   .search-box {
     display: flex;
@@ -56,4 +51,3 @@
       padding: 10px 15px;
     }
   }
-  

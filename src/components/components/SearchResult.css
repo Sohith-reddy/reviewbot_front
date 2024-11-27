@@ -1,0 +1,31 @@
+.search-result {
+  padding: 10px 20px;
+}
+
+.search-result:hover {
+  background-color: #efefef;
+}
+.search-result {
+  cursor: pointer;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.reviews-container {
+  margin-top: 10px;
+  padding-left: 20px;
+}
+
+.reviews-container h3 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.reviews-container ul {
+  list-style-type: disc;
+}
+
+.reviews-container li {
+  margin-bottom: 5px;
+}

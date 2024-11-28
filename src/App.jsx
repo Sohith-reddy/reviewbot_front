@@ -11,6 +11,8 @@ import Footer from './components/Footer';
 import NotFound from './components/NotFound';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
+import ProductName from './components/app';
+import ProductURL from './components/productUrl';
 
 
 function App() {
@@ -21,6 +23,8 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Example />} />
+        <Route path="/product-name" element={<ProductName/>} />
+        <Route path="/product-url" element={<ProductURL />} />
         <Route path="/pricing" element={<Pricing/>} />
         <Route path="/features" element={<Features/>} />
         <Route path="/team" element={<Team/>} />

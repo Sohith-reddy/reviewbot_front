@@ -4,7 +4,7 @@ import { useState } from "react";
 import { SearchBar } from "./components/SearchBar";
 import { SearchResultsList } from "./components/SearchResultsList";
 
-function App() {
+function ProductName() {
   const [results, setResults] = useState([]);
 
   return (
@@ -17,4 +17,4 @@ function App() {
   );
 }
 
-export default App;
+export default ProductName;

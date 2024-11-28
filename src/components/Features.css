@@ -1,53 +1,58 @@
-/* Center the search bar on the page */
-/* Ensure the container takes full height and centers content */
+/* Container styling */
+.features-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  /* background: linear-gradient(135deg, #e2dde7, #f7f7f7); */
+  /* color: #fff; */
+  font-family: 'Arial', sans-serif;
+}
 
-  
-  .search-box {
-    display: flex;
-    align-items: center;
-    border: 2px solid #007bff;
-    border-radius: 30px;
-    padding: 10px;
-    background-color: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+/* Heading styling */
+.features-heading {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* Button group styling */
+.button-group {
+  display: flex;
+  gap: 1.5rem;
+}
+
+/* Button styling */
+.features-button {
+  padding: 0.75rem 2rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  background: linear-gradient(45deg, #4f46ef, #4f46ef);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+}
+
+/* Hover effects */
+.features-button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(45deg, #000000, #000000);
+}
+
+/* Animation */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
   }
-  
-  .search-input {
-    width: 300px;
-    padding: 10px;
-    border: none;
-    outline: none;
-    font-size: 16px;
-    border-radius: 30px 0 0 30px;
-    transition: all 0.3s ease;
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  .search-input:focus {
-    box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
-  }
-  
-  .search-button {
-    background-color: #007bff;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 0 30px 30px 0;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .search-button:hover {
-    background-color: #0056b3;
-  }
-  
-  /* Responsive styling */
-  @media (max-width: 768px) {
-    .search-input {
-      width: 200px;
-    }
-  
-    .search-button {
-      padding: 10px 15px;
-    }
-  }
+}

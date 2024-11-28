@@ -1,0 +1,40 @@
+.product-url-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #e9ecef;
+  }
+  
+  .product-url-heading {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: #333;
+  }
+  
+  .product-url-input {
+    width: 80%;
+    max-width: 400px;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+  }
+  
+  .product-url-button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .product-url-button:hover {
+    background-color: #218838;
+  }
+  

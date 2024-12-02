@@ -1,4 +1,112 @@
 /* Center the search bar on the page */
+/* Basic Layout */
+.search-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.search-box {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
+  justify-content: center;
+}
+
+.search-input {
+  width: 300px;
+  padding: 10px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.search-button {
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.search-button:hover {
+  background-color: #0056b3;
+}
+
+.error-message {
+  color: red;
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+/* Pros and Cons Styling */
+.pros-cons-container {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  max-width: 1000px;
+  flex-wrap: wrap;
+}
+
+.pros-cons-section {
+  width: 48%;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin: 10px 0;
+  transition: transform 0.3s ease;
+}
+
+.pros-cons-section.empty {
+  background-color: #f7e7e7;
+}
+
+.pros-cons-section h3 {
+  color: #333;
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+.pros-cons-section ul {
+  padding-left: 20px;
+}
+
+.pros-cons-section ul li {
+  margin-bottom: 8px;
+}
+
+.pros-cons-section p {
+  color: #666;
+  font-style: italic;
+  font-size: 16px;
+}
+
+.pros-cons-section:hover {
+  transform: scale(1.05);
+}
+
+.pros-cons-section:first-of-type {
+  margin-right: 4%;
+}
+
+/* For better responsiveness */
+@media (max-width: 768px) {
+  .pros-cons-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .pros-cons-section {
+    width: 90%;
+    margin-bottom: 15px;
+  }
+}
+
 .search-container {
     display: flex;
     justify-content: center;
@@ -56,3 +164,4 @@
       padding: 10px 15px;
     }
   }
+  

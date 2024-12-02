@@ -24,11 +24,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Example />} />
         <Route path="/product-name" element={<ProductName/>} />
-        <Route path="/product-url" element={<ProductURL />} />
         <Route path="/pricing" element={<Pricing/>} />
         <Route path="/features" element={<Features/>} />
         <Route path="/team" element={<Team/>} />
-        <Route path="/amazon" element={<Amazon/>}/>
+        <Route path="/product-url" element={<Amazon/>}/>
         <Route path='/contact' element={<Contact/>} />
         <Route path='/login' element={<Login/>} />
         <Route path='/signup' element={<SignUp/>} />

@@ -4,26 +4,26 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 
-const testimonials = [
-  {
-    content: "ReviewBot has revolutionized our code review process. The AI insights have helped us catch potential issues early and improved our code quality significantly.",
-    author: "Michael Foster",
-    role: "Senior Developer, TechCorp",
-    image: "https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-  },
-  {
-    content: "The automated analysis saves us hours of manual review time. It's like having an extra team member who never gets tired.",
-    author: "Sarah Chen",
-    role: "Tech Lead, InnovateLabs",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-  },
-  {
-    content: "We've seen a 40% reduction in bugs making it to production since implementing ReviewBot. The ROI has been incredible.",
-    author: "James Wilson",
-    role: "CTO, DevScale",
-    image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-  }
-];
+// const testimonials = [
+//   {
+//     content: "ReviewBot has revolutionized our code review process. The AI insights have helped us catch potential issues early and improved our code quality significantly.",
+//     author: "Michael Foster",
+//     role: "Senior Developer, TechCorp",
+//     image: "https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+//   },
+//   {
+//     content: "The automated analysis saves us hours of manual review time. It's like having an extra team member who never gets tired.",
+//     author: "Sarah Chen",
+//     role: "Tech Lead, InnovateLabs",
+//     image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+//   },
+//   {
+//     content: "We've seen a 40% reduction in bugs making it to production since implementing ReviewBot. The ROI has been incredible.",
+//     author: "James Wilson",
+//     role: "CTO, DevScale",
+//     image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+//   }
+// ];
 
 const TestimonialCard = ({ testimonial, index }) => {
   const cardRef = useRef(null);
@@ -133,30 +133,30 @@ export default function Example() {
             transition={{ duration: 0.6 }}
             className="mx-auto max-w-xl text-center"
           >
-            <motion.h2
+            {/* <motion.h2
               initial={{ scale: 0.95 }}
               animate={{ scale: 1 }}
               transition={{ delay: 0.2, duration: 0.5 }}
               className="text-lg font-semibold leading-8 tracking-tight text-indigo-600"
             >
               Testimonials
-            </motion.h2>
-            <motion.p
+            </motion.h2> */}
+            {/* <motion.p
               initial={{ scale: 0.95 }}
               animate={{ scale: 1 }}
               transition={{ delay: 0.3, duration: 0.5 }}
               className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
             >
               Trusted by Developers Worldwide
-            </motion.p>
+            </motion.p> */}
           </motion.div>
-          <div className="mx-auto mt-16 flow-root max-w-2xl sm:mt-20 lg:mx-0 lg:max-w-none">
-            <div className="-mt-8 sm:-mx-4 sm:columns-2 sm:text-[0] lg:columns-3">
+          {/* <div className="mx-auto mt-16 flow-root max-w-2xl sm:mt-20 lg:mx-0 lg:max-w-none"> */}
+            {/* <div className="-mt-8 sm:-mx-4 sm:columns-2 sm:text-[0] lg:columns-3">
               {testimonials.map((testimonial, index) => (
                 <TestimonialCard key={index} testimonial={testimonial} index={index} />
               ))}
-            </div>
-          </div>
+            </div> */}
+          {/* </div> */}
         </div>
       </div>
     </div>

@@ -8,42 +8,42 @@ const teamMembers = [
     name: 'MS Charan',
     role: 'Project Lead',
     description: 'Expert in AI and machine learning with 8 years of experience.',
-    image: '/assets/team/charan.jpg'
+    image: '/assets/teams/charan.png'
   },
   {
     id: 2,
     name: 'Sudheep Bhaskar',
     role: 'Senior Developer',
     description: 'Full-stack developer specialized in React and Node.js.',
-    image: '/assets/team/sudheep.jpg'
+    image: '/assets/teams/sudheep.png'
   },
   {
     id: 3,
     name: 'Telukoti Vishal',
     role: 'UX Designer',
     description: 'Creating intuitive and beautiful user experiences.',
-    image: '/assets/team/vishal.jpg'
+    image: '/assets/teams/vishal.png'
   },
   {
     id: 4,
     name: 'B.R Sohith',
     role: 'Backend Engineer',
     description: 'Specialized in scalable architecture and API design.',
-    image: '/assets/team/jagan.jpg'
+    image: '/assets/teams/jagan.png'
   },
   {
     id: 5,
     name: 'Mantri Yeshwanth',
     role: 'Data Scientist',
     description: 'Expert in data analysis and machine learning models.',
-    image: '/assests/team/yesh.jpg'
+    image: '/assets/teams/yesh.png'
   },
   {
     id: 6,
     name: 'Sudhamsh Bootla',
     role: 'Frontend Developer',
     description: 'Passionate about creating responsive and accessible web applications.',
-    image: '/assets/team/arjun.jpg'
+    image: '/assets/teams/arjun.png'
   }
 ];
 

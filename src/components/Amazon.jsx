@@ -5,6 +5,7 @@ function Amazon() {
   const [inputValue, setInputValue] = useState('');
   const [error, setError] = useState('');
   const [responseData, setResponseData] = useState(null);
+  const [isLoading, setIsLoading] = useState(false); // Loading state
 
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
@@ -15,6 +16,8 @@ function Amazon() {
       setError("Please enter a product name.");
       return;
     }
+
+    setIsLoading(true); // Start loading
 
     try {
       const response = await fetch('http://localhost:3000/search', {
@@ -29,15 +32,17 @@ function Amazon() {
         setError('');
         const result = await response.json();
         console.log("Reviews fetched: ", result);
-
-        // Set the response data to be displayed
-        setResponseData(result.flaskResponse);
+        const cleanResponseText = result.flaskResponse.response_text.replace(/```json|```|\n/g, "");
+        const parsedResponse = JSON.parse(cleanResponseText);
+        setResponseData(parsedResponse);
       } else {
         setError('No reviews found or error occurred.');
       }
     } catch (error) {
       console.error('Error:', error);
       setError('Error fetching reviews. Please try again.');
+    } finally {
+      setIsLoading(false); // Stop loading once request is completed
     }
   };
 
@@ -48,28 +53,37 @@ function Amazon() {
 
     return (
       <div className="pros-cons-container">
-        <div className="pros-cons-section">
+        {/* Pros Section */}
+        <div className={`pros-cons-section ${pros.length === 0 ? 'empty' : ''}`}>
           <h3>Pros</h3>
-          <ul>
-            {pros.map((item, index) => (
-              <li key={index}>{item}</li>
-            ))}
-          </ul>
+          {pros.length > 0 ? (
+            <ul>
+              {pros.map((item, index) => (
+                <li key={index}>{item}</li>
+              ))}
+            </ul>
+          ) : (
+            <p>No pros found.</p>
+          )}
         </div>
 
-        <div className="pros-cons-section">
+        {/* Cons Section */}
+        <div className={`pros-cons-section ${cons.length === 0 ? 'empty' : ''}`}>
           <h3>Cons</h3>
-          <ul>
-            {cons.map((item, index) => (
-              <li key={index}>{item}</li>
-            ))}
-          </ul>
+          {cons.length > 0 ? (
+            <ul>
+              {cons.map((item, index) => (
+                <li key={index}>{item}</li>
+              ))}
+            </ul>
+          ) : (
+            <p>No cons found.</p>
+          )}
         </div>
       </div>
     );
   };
 
-  // Log responseData when it changes using useEffect
   useEffect(() => {
     if (responseData) {
       console.log("Updated responseData: ", responseData);
@@ -93,6 +107,9 @@ function Amazon() {
 
       {/* Display error if any */}
       {error && <div className="error-message">{error}</div>}
+
+      {/* Show loading spinner if isLoading is true */}
+      {isLoading && <div className="loading-spinner">Loading...</div>}
 
       {/* Render pros and cons if available */}
       {renderProsCons()}

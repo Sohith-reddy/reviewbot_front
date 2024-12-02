@@ -19,11 +19,29 @@ export default function Contact() {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // Handle form submission here
-        console.log(formData);
+    
+        try {
+            const response = await fetch('http://localhost:3000/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData),
+            });
+    
+            if (response.ok) {
+                alert('Your message has been sent successfully!');
+                setFormData({ name: '', email: '', message: '' }); // Reset the form
+            } else {
+                const errorData = await response.json();
+                alert(`Error: ${errorData.error}`);
+            }
+        } catch (error) {
+            console.error('Error submitting the form:', error);
+            alert('Failed to send your message. Please try again later.');
+        }
     };
+    
 
     return (
         <GradientBackground>

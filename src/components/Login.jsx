@@ -10,10 +10,33 @@ export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Add login logic here
+  
+    try {
+      const response = await fetch('http://localhost:3000/api/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
+  
+      const data = await response.json();
+  
+      if (response.ok) {
+        // Login successful
+        localStorage.setItem('token', data.token); // Store token (optional)
+        navigate('/'); // Redirect to home page
+      } else {
+        alert(data.message || 'Login failed. Please try again.'); // Show error message
+      }
+    } catch (err) {
+      console.error(err);
+      alert('An error occurred. Please try again later.');
+    }
   };
+  
 
   return (
     <GradientBackground>

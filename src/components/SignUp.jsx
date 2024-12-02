@@ -11,10 +11,31 @@ export default function SignUp() {
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Add signup logic here
+  
+    try {
+      const response = await fetch('http://localhost:3000/api/auth/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name, email, password }),
+      });
+  
+      if (response.ok) {
+        alert('Signup successful! Redirecting to Login...');
+        navigate('/login'); // Navigate to the Login page
+      } else {
+        const errorData = await response.json();
+        alert(`Signup failed: ${errorData.message}`);
+      }
+    } catch (error) {
+      console.error('Error during signup:', error);
+      alert('An error occurred. Please try again.');
+    }
   };
+  
 
   return (
     <GradientBackground>

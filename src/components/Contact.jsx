@@ -1,9 +1,46 @@
-import { useState } from 'react';
-import { Container, Box, Typography, TextField, Button, Grid, Paper, Stack } from '@mui/material';
+import React, { useState } from 'react';
+import { Box, Container, Typography, Grid, Card, CardContent, Stack, Paper, TextField, Button } from '@mui/material';
 import EmailIcon from '@mui/icons-material/Email';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import PhoneIcon from '@mui/icons-material/Phone';
 import GradientBackground from './GradientBackground';
+import { motion, AnimatePresence } from 'framer-motion';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import ErrorIcon from '@mui/icons-material/Error';
+
+
+const Alert = ({ status, message }) => {
+    const variants = {
+        initial: { opacity: 0, y: -20 },
+        animate: { opacity: 1, y: 0 },
+        exit: { opacity: 0, y: 20 }
+    };
+
+    const colors = {
+        success: 'bg-green-50 text-green-800 border-green-200',
+        error: 'bg-red-50 text-red-800 border-red-200',
+        loading: 'bg-blue-50 text-blue-800 border-blue-200'
+    };
+
+    return (
+        <AnimatePresence>
+            {message && (
+                <motion.div
+                    initial="initial"
+                    animate="animate"
+                    exit="exit"
+                    variants={variants}
+                    transition={{ duration: 0.3 }}
+                    className={`fixed top-24 right-4 rounded-lg border px-4 py-3 shadow-lg ${colors[status]} flex items-center gap-2 z-50`}
+                >
+                    {status === 'success' && <CheckCircleIcon className="text-green-600" />}
+                    {status === 'error' && <ErrorIcon className="text-red-600" />}
+                    <p className="font-medium">{message}</p>
+                </motion.div>
+            )}
+        </AnimatePresence>
+    );
+};
 
 export default function Contact() {
     const [formData, setFormData] = useState({
@@ -12,6 +49,10 @@ export default function Contact() {
         message: ''
     });
 
+    const [submitStatus, setSubmitStatus] = useState({
+        status: null,
+        message: ''
+    });
     const handleChange = (e) => {
         setFormData({
             ...formData,
@@ -21,31 +62,47 @@ export default function Contact() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-    
+        setSubmitStatus({ status: 'loading', message: 'Sending message...' });
+
         try {
             const response = await fetch('http://localhost:3000/api/contact', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData),
             });
-    
-            if (response.ok) {
-                alert('Your message has been sent successfully!');
-                setFormData({ name: '', email: '', message: '' }); // Reset the form
-            } else {
-                const errorData = await response.json();
-                alert(`Error: ${errorData.error}`);
+
+            if (!response.ok) {
+                throw new Error('Failed to submit form');
             }
+
+            setSubmitStatus({
+                status: 'success',
+                message: 'Message sent successfully!'
+            });
+            setFormData({ name: '', email: '', message: '' });
+
+            // Clear success message after 5 seconds
+            setTimeout(() => {
+                setSubmitStatus({ status: null, message: '' });
+            }, 5000);
         } catch (error) {
-            console.error('Error submitting the form:', error);
-            alert('Failed to send your message. Please try again later.');
+            console.error('Error submitting form:', error);
+            setSubmitStatus({
+                status: 'error',
+                message: 'Failed to send message. Please try again.'
+            });
+
+            // Clear error message after 5 seconds
+            setTimeout(() => {
+                setSubmitStatus({ status: null, message: '' });
+            }, 5000);
         }
     };
-    
+
 
     return (
         <GradientBackground>
-
+            <Alert status={submitStatus.status} message={submitStatus.message} />
             <Box
                 sx={{
                     minHeight: '100vh',

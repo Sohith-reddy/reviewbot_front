@@ -6,21 +6,21 @@ import { useRef } from 'react';
 
 const testimonials = [
   {
-    content: "ReviewBot has revolutionized our code review process. The AI insights have helped us catch potential issues early and improved our code quality significantly.",
-    author: "Michael Foster",
+    content: "ReviewBot has revolutionized product review process. The AI insights have helped us buy better products and services, thereby improving out decision making significantly.",
+    author: "Murali Vijay",
     role: "Senior Developer, TechCorp",
     image: "https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
   },
   {
-    content: "The automated analysis saves us hours of manual review time. It's like having an extra team member who never gets tired.",
-    author: "Sarah Chen",
+    content: "The automated analysis saves us hours of manual review time. for our team It's like having an extra team member who never gets tired.",
+    author: "Dinesh Karthik",
     role: "Tech Lead, InnovateLabs",
     image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
   },
   {
-    content: "We've seen a 40% reduction in bugs making it to production since implementing ReviewBot. The ROI has been incredible.",
-    author: "James Wilson",
-    role: "CTO, DevScale",
+    content: "We've seen a 40% reduction in costs making it to production since implementing ReviewBot. The ROI has been incredible.",
+    author: "Telukoti Vishal",
+    role: "CEO, Telukoti Tech",
     image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
   }
 ];

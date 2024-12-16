@@ -1,45 +1,56 @@
 // src/components/SignUp.jsx
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+// import { useAuth } from '../context/AuthContext';
 import GradientBackground from './GradientBackground';
 import { FcGoogle } from 'react-icons/fc';
 import { FaGithub } from 'react-icons/fa';
 
 export default function SignUp() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    password: ''
+  });
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
   const navigate = useNavigate();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [name, setName] = useState('');
+  // const { login } = useAuth();
+  // const [email, setEmail] = useState('');
+  // const [password, setPassword] = useState('');
+  // const [name, setName] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+    setError('');
+    setSuccess('');
     try {
       const response = await fetch('http://localhost:3000/api/auth/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ name, email, password }),
+        body: JSON.stringify(formData),
+
       });
-  
+      const data = await response.json();
       if (response.ok) {
-        alert('Signup successful! Redirecting to Login...');
+        // alert('Signup successful! Redirecting to Login...');
+        login(data.user);
+        setSuccess('Account created successfully!');
         navigate('/login'); // Navigate to the Login page
       } else {
-        const errorData = await response.json();
-        alert(`Signup failed: ${errorData.message}`);
+        setError(data.message || 'Signup failed. Please try again.');
       }
-    } catch (error) {
-      console.error('Error during signup:', error);
-      alert('An error occurred. Please try again.');
+    } catch (err) {
+      setError('An error occurred. Please try again.');
     }
   };
-  
+
 
   return (
     <GradientBackground>
-      <div className="flex min-h-screen flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+      <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
             Create your account
@@ -47,6 +58,16 @@ export default function SignUp() {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+          {error && (
+            <div className="fixed top-0 left-1/2 transform -translate-x-1/2 rounded-md bg-red-50 p-4 z-50">
+              <div className="text-sm text-red-700">{error}</div>
+            </div>
+          )}
+          {success && (
+            <div className="fixed top-0 left-1/2 transform -translate-x-1/2 rounded-md bg-green-50 p-4 z-50">
+              <div className="text-sm text-green-700">{success}</div>
+            </div>
+          )}
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
               <label htmlFor="name" className="block text-sm font-medium leading-6 text-gray-900">
@@ -58,8 +79,8 @@ export default function SignUp() {
                   name="name"
                   type="text"
                   required
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
@@ -76,8 +97,8 @@ export default function SignUp() {
                   type="email"
                   autoComplete="email"
                   required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
@@ -94,8 +115,8 @@ export default function SignUp() {
                   type="password"
                   autoComplete="new-password"
                   required
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  value={formData.password}
+                  onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>

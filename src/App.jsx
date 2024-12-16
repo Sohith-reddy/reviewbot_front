@@ -13,6 +13,7 @@ import Login from './components/Login';
 import SignUp from './components/SignUp';
 import ProductName from './components/app';
 import ProductURL from './components/productUrl';
+import Chatbot2 from './components/Chatbot2';
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
         <Route path='/contact' element={<Contact/>} />
         <Route path='/login' element={<Login/>} />
         <Route path='/signup' element={<SignUp/>} />
+        <Route path='/ch' element={<Chatbot2/>} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />

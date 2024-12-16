@@ -159,6 +159,7 @@ export default function Example() {
           </div>
         </div>
       </div>
+     {/* <Chatbot /> */}
     </div>
   )
 }

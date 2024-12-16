@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import './Features.css';
+import Chatbot from './Chatbot';
 
 function Features() {
   const navigate = useNavigate();
@@ -11,6 +12,7 @@ function Features() {
         <button className="features-button" onClick={() => navigate('/product-name')}>Product Name</button>
         <button className="features-button" onClick={() => navigate('/product-url')}>Product URL</button>
       </div>
+      <Chatbot/>
     </div>
   );
 }

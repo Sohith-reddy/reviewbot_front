@@ -1,10 +1,15 @@
 import { useState, useEffect } from 'react';
 import './Amazon.css';
+import Chatbot from './Chatbot';
 
 function Amazon() {
   const [inputValue, setInputValue] = useState('');
   const [error, setError] = useState('');
   const [responseData, setResponseData] = useState(null);
+  const [reviews, setReviews] = useState(null);
+  // const [reviews, setReviews] = useState("An electrical product has been sent in a torn and damaged package which raises the question of authenticity of a premium product like Philips…. Money should be returned ASAP");  // State to store scraped reviews
+
+  // State to store scraped reviews
   const [isLoading, setIsLoading] = useState(false); // Loading state
 
   const handleInputChange = (e) => {
@@ -32,9 +37,13 @@ function Amazon() {
         setError('');
         const result = await response.json();
         console.log("Reviews fetched: ", result);
+        
         const cleanResponseText = result.flaskResponse.response_text.replace(/```json|```|\n/g, "");
         const parsedResponse = JSON.parse(cleanResponseText);
+
+        // Update state with scraped reviews and the Flask response
         setResponseData(parsedResponse);
+        setReviews(result.reviews);  // Set the scraped reviews data
       } else {
         setError('No reviews found or error occurred.');
       }
@@ -113,6 +122,10 @@ function Amazon() {
 
       {/* Render pros and cons if available */}
       {renderProsCons()}
+
+      {/* Conditionally render Chatbot only if reviews are available */}
+      {reviews && reviews.length > 0 && <Chatbot reviews={reviews} />}
+      {/* {console.log(reviews)} */}
     </div>
   );
 }

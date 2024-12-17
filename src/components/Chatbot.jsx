@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FaRobot, FaPaperPlane, FaTimes, FaUser } from 'react-icons/fa';
 
-const Chatbot = () => {
+const Chatbot = ({ reviews }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [messages, setMessages] = useState([]);
     const [input, setInput] = useState('');
@@ -18,12 +18,35 @@ const Chatbot = () => {
             setInput('');
             setLoading(true);
 
-            // Simulate a delay for bot response
-            setTimeout(() => {
-                const botResponse = { sender: 'bot', text: 'This is a dummy response from the bot.' };
-                setMessages((prevMessages) => [...prevMessages, botResponse]);
+            try {
+                const response = await fetch('https://461c-34-46-173-49.ngrok-free.app/process2', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        product_data: reviews, 
+                        question: input,       
+                    }),
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    // console.log(data)
+                    // console.log(data.response_text)
+                    const botResponse = { sender: 'bot', text: data.response_text || 'Sorry, I didn\'t understand that.' };
+                    setMessages((prevMessages) => [...prevMessages, botResponse]);
+                } else {
+                    const errorResponse = { sender: 'bot', text: 'Sorry, there was an error processing your request.' };
+                    setMessages((prevMessages) => [...prevMessages, errorResponse]);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                const errorResponse = { sender: 'bot', text: 'An error occurred. Please try again.' };
+                setMessages((prevMessages) => [...prevMessages, errorResponse]);
+            } finally {
                 setLoading(false);
-            }, 1000); // 1 second delay
+            }
         }
     };
 
